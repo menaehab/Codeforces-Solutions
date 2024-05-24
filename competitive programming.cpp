@@ -13,17 +13,26 @@ using namespace std;
 int main()
 {
 	speedup;
-	ll n, x = 2, y = 1, z = 0,res = 0;
-	cin >> n;
-	while (x <= n)
+	int t;
+	cin >> t;
+	while (t--)
 	{
-		if (x % 2 == 0)
+		int h1, m1, s1, h2, m2, s2;
+		ll res1, res2;
+		cin >> h1 >> m1 >> s1 >> h2 >> m2 >> s2;
+		res1 = h1 * 60 * 60 + m1 * 60 + s1;
+		res2 = h2 * 60 * 60 + m2 * 60 + s2;
+		if (res1 > res2)
 		{
-			res += x;
+			cout << "Player2" << el;
 		}
-		z = x + y;
-		y = x;
-		x = z;
+		else if (res1 < res2)
+		{
+			cout << "Player1" << el;
+		}
+		else
+		{
+			cout << "Tie" << el;
+		}
 	}
-	cout << res;
 }
