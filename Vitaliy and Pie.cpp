@@ -1,41 +1,41 @@
 #include <iostream>
+#include <bits/stdc++.h>
+#include <vector>
+#include <algorithm>
+#include <cmath>
 #include <map>
+#include<iomanip>
 #include <string>
+#define speedup ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define ll long long
+#define el "\n"
+#define all(arr) arr.begin(), arr.end()
+#define allr(arr) arr.rbegin(), arr.rend()
+#define in freopen("input.in", "r", stdin);
+#define out freopen("output.out", "w", stdout);
 using namespace std;
 int main()
 {
+	speedup;
 	int n;
-	cin >> n;
-	map<char, int>dic;
-	char x, y;
-	for (int i = 0; i < n-1; i++)
+	string x;
+	cin >> n >> x;
+	int res = 0;
+	map <char, int> mp;
+	for (int i = 0; i < n * 2 - 2; i++) 
 	{
-		cin >> x >> y;
-		if (toupper(x) != y)
+		if (i % 2 == 0) 
 		{
-			if (dic.size() <= 0 ||dic.find(x) == dic.end())
+			mp[x[i] - 32]++;
+		}
+		else
+		{
+			if (!mp[x[i]]) 
 			{
-				dic[x] = 1;
+				res++;
 			}
-			else if (dic.size() > 0 && (dic.find(x) != dic.end()))
-			{
-				auto z = dic.find(x);
-				z->second++;
-			}
-			for (auto j = dic.begin(); j != dic.end(); j++)
-			{
-				if (toupper(j->first == y) && (j->second != 0))
-				{
-					j->second--;
-					break;
-				}
-			}
+			else mp[x[i]]--;
 		}
 	}
-	int sum = 0;
-	for (auto i = dic.begin(); i != dic.end(); i++)
-	{
-		sum += i->second;
-	}
-	cout << sum;
+	cout << res;
 }

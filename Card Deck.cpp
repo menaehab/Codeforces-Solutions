@@ -17,16 +17,22 @@ using namespace std;
 int main()
 {
 	speedup;
-	int n;
-	cin >> n;
-	n -= 2;
-	if (n % 3 == 0)
+	int t;
+	cin >> t;
+	while (t--)
 	{
-		n--;
-		cout << n << " " << 2 << " " << 1;
-	}
-	else
-	{
-		cout << n << " " << 1 << " " << 1;
+		int n;
+		cin >> n;
+		vector<int>arr, res;
+		for (int i = 0; i < n; i++)
+		{
+			int x;
+			cin >> x;
+			arr.push_back(x);
+		}
+		while (!arr.empty())
+		{
+
+		}
 	}
 }

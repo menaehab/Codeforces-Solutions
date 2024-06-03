@@ -14,19 +14,28 @@
 #define in freopen("input.in", "r", stdin);
 #define out freopen("output.out", "w", stdout);
 using namespace std;
+bool isPrime(int n)
+{
+	if (n <= 1)
+		return false;
+
+	for (int i = 2; i <= sqrt(n); i++)
+		if (n % i == 0)
+			return false;
+
+	return true;
+}
 int main()
 {
 	speedup;
 	int n;
 	cin >> n;
-	n -= 2;
-	if (n % 3 == 0)
+	if (isPrime(n - 2))
 	{
-		n--;
-		cout << n << " " << 2 << " " << 1;
+		cout << n - 2 << " 2";
 	}
 	else
 	{
-		cout << n << " " << 1 << " " << 1;
+		cout << -1;
 	}
 }

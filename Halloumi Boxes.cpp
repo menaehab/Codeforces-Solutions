@@ -1,35 +1,38 @@
 #include <iostream>
 #include <bits/stdc++.h>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include<iomanip>
+#include <string>
+#define speedup ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define ll long long
+#define el "\n"
+#define all(arr) arr.begin(), arr.end()
+#define allr(arr) arr.rbegin(), arr.rend()
+#define in freopen("input.in", "r", stdin);
+#define out freopen("output.out", "w", stdout);
 using namespace std;
 int main()
 {
-    long long  t, n, x, flag = 0, arr[200];
-    cin >> t;
-    while (t--)
-    {
-        cin >> n >> x;
-        for (long long i = 0; i < n; i++) 
-        {
-            cin >> arr[i];
-        }
-        for (long long i = 1; i < n; i++){
-            if (arr[i] < arr[i - 1])
-            {
-                flag = 1;
-                break;
-            }
-        }
-        if (flag == 0)
-        {
-            cout << "YES\n";
-        }
-        else if (x == 1)
-        {
-            cout << "NO\n";
-        }
-        else 
-        {
-            cout << "YES\n";
-        }
-    }
+	speedup;
+	int t;
+	cin >> t;
+	while (t--)
+	{
+		int n, k;
+		cin >> n >> k;
+		vector<int>arr(n);
+		for (int i = 0; i < n; i++)
+		{
+			cin >> arr[i];
+		}
+		if (k == 1 && !is_sorted(all(arr)))
+		{
+			cout << "NO" << el;
+		}
+		else
+			cout << "YES" << el;
+	}
 }

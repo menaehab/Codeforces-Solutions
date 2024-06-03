@@ -17,16 +17,28 @@ using namespace std;
 int main()
 {
 	speedup;
-	int n;
-	cin >> n;
-	n -= 2;
-	if (n % 3 == 0)
+	int t;
+	cin >> t;
+	while (t--)
 	{
-		n--;
-		cout << n << " " << 2 << " " << 1;
-	}
-	else
-	{
-		cout << n << " " << 1 << " " << 1;
+        int n,mx = 0;
+        cin >> n;
+        vector<int> arr(n);
+        map<int, int> cnt, ans;
+        for (int i = 0; i < n; i++) 
+        {
+            cin >> arr[i];
+        }
+        for (int i = 0; i < n; i++)
+        {
+            cnt[arr[i]]++;
+            int res = cnt[arr[i]];
+            ans[res] += res;
+        }
+        for (auto x : ans)
+        {
+            mx = max(mx, x.second);
+        }
+        cout << n - mx << el;
 	}
 }

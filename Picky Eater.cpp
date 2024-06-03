@@ -17,16 +17,14 @@ using namespace std;
 int main()
 {
 	speedup;
-	int n;
-	cin >> n;
-	n -= 2;
-	if (n % 3 == 0)
+	int x, y;
+	cin >> x >> y;
+	if (x >= y)
 	{
-		n--;
-		cout << n << " " << 2 << " " << 1;
+		cout << "1";
 	}
 	else
 	{
-		cout << n << " " << 1 << " " << 1;
+		cout << "0";
 	}
 }

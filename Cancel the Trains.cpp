@@ -17,16 +17,31 @@ using namespace std;
 int main()
 {
 	speedup;
-	int n;
-	cin >> n;
-	n -= 2;
-	if (n % 3 == 0)
+	int t;
+	cin >> t;
+	while (t--)
 	{
-		n--;
-		cout << n << " " << 2 << " " << 1;
-	}
-	else
-	{
-		cout << n << " " << 1 << " " << 1;
+		int n, m;
+		cin >> n >> m;
+		map<int, int>mp;
+		int x,res = 0;
+		for (int i = 0; i < n; i++)
+		{
+			cin >> x;
+			mp[x]++;
+		}
+		for (int i = 0; i < m; i++)
+		{
+			cin >> x;
+			mp[x]++;
+		}
+		for (auto i : mp)
+		{
+			if (i.second > 1)
+			{
+				res++;
+			}
+		}
+		cout << res << el;
 	}
 }

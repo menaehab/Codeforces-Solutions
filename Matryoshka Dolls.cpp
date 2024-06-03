@@ -17,16 +17,12 @@ using namespace std;
 int main()
 {
 	speedup;
-	int n;
-	cin >> n;
-	n -= 2;
-	if (n % 3 == 0)
+	int x, y,res = 0;
+	cin >> x >> y;
+	while (x > 0)
 	{
-		n--;
-		cout << n << " " << 2 << " " << 1;
+		x /= y;
+		res++;
 	}
-	else
-	{
-		cout << n << " " << 1 << " " << 1;
-	}
+	cout << res;
 }

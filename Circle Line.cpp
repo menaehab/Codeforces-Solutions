@@ -17,16 +17,19 @@ using namespace std;
 int main()
 {
 	speedup;
-	int n;
-	cin >> n;
-	n -= 2;
-	if (n % 3 == 0)
-	{
-		n--;
-		cout << n << " " << 2 << " " << 1;
-	}
-	else
-	{
-		cout << n << " " << 1 << " " << 1;
-	}
+    int n, x, s, t,res;
+    vector<int>arr(102);
+    cin >> n;
+    for (int i = 2; i < n + 2; ++i)
+    {
+        cin >> x;
+        arr[i] = arr[i - 1] + x;
+    }
+    cin >> s >> t;
+    if (s > t)
+    {
+        swap(s, t);
+    }
+    res = arr[t] - arr[s];
+    cout << min(res, (arr[n + 1] - res));
 }

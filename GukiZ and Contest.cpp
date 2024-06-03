@@ -19,14 +19,21 @@ int main()
 	speedup;
 	int n;
 	cin >> n;
-	n -= 2;
-	if (n % 3 == 0)
+	vector<int>arr(n);
+	for (int i = 0; i < n; i++)
 	{
-		n--;
-		cout << n << " " << 2 << " " << 1;
+		cin >> arr[i];
 	}
-	else
+	for (int i = 0; i < n; i++)
 	{
-		cout << n << " " << 1 << " " << 1;
+		int cnt = 1;
+		for (int j = 0; j < n; j++)
+		{
+			if (arr[j] > arr[i])
+			{
+				cnt++;
+			}
+		}
+		cout << cnt << " ";
 	}
 }
