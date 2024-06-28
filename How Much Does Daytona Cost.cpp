@@ -21,28 +21,20 @@ int main()
 	cin >> t;
 	while (t--)
 	{
-        int n;
-        string s;
-        cin >> n >> s;
-        int x = n, y = 0;
+        int n, b;
+        cin >> n >> b;
+        vector<int> arr(n);
         for (int i = 0; i < n; i++)
         {
-            if (s[i] == 'A')
-            {
-                x = min(i, x);
-            }
-            if (s[i] == 'B')
-            {
-                y = max(i, y);
-            }
+            cin >> arr[i];
         }
-        if (x > y)
+        if (find(all(arr), b) != arr.end())
         {
-            cout << 0 << el;
+            cout << "YES" << el;
         }
         else
         {
-            cout << y - x << el;
+            cout << "NO" << el;
         }
 	}
 }

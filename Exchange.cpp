@@ -21,28 +21,21 @@ int main()
 	cin >> t;
 	while (t--)
 	{
-        int n;
-        string s;
-        cin >> n >> s;
-        int x = n, y = 0;
-        for (int i = 0; i < n; i++)
-        {
-            if (s[i] == 'A')
-            {
-                x = min(i, x);
-            }
-            if (s[i] == 'B')
-            {
-                y = max(i, y);
-            }
-        }
-        if (x > y)
-        {
-            cout << 0 << el;
-        }
-        else
-        {
-            cout << y - x << el;
-        }
+		ll n, a, b;
+		cin >> n >> a >> b;
+		if (a > b) {
+			cout << 1 << el;
+		}
+		else
+		{
+			if (n % a == 0)
+			{
+				cout << n / a << el;
+			}
+			else
+			{
+				cout << n / a + 1 << el;
+			}
+		}
 	}
 }

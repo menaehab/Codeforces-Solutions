@@ -22,27 +22,25 @@ int main()
 	while (t--)
 	{
         int n;
-        string s;
-        cin >> n >> s;
-        int x = n, y = 0;
-        for (int i = 0; i < n; i++)
+        cin >> n;
+        if (n == 2 || n == 3)
         {
-            if (s[i] == 'A')
-            {
-                x = min(i, x);
-            }
-            if (s[i] == 'B')
-            {
-                y = max(i, y);
-            }
-        }
-        if (x > y)
-        {
-            cout << 0 << el;
+            cout << -1;
         }
         else
         {
-            cout << y - x << el;
+            for (int i = n; i > 0; --i)
+            {
+                if (i % 2 != 0) {
+                    cout << i << ' ';
+                }
+            }
+            cout << 4 << ' ' << 2 << ' ';
+            for (int i = 6; i <= n; i += 2)
+            {
+                cout << i << ' ';
+            }
         }
+        cout << el;
 	}
 }

@@ -16,33 +16,41 @@
 using namespace std;
 int main()
 {
-	speedup;
-	int t;
-	cin >> t;
-	while (t--)
-	{
-        int n;
-        string s;
-        cin >> n >> s;
-        int x = n, y = 0;
+    speedup;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n, x, k, fav, cnt1 = 0, cnt2 = 0;
+        cin >> n >> x >> k;
+        vector<int>arr(n);
         for (int i = 0; i < n; i++)
         {
-            if (s[i] == 'A')
-            {
-                x = min(i, x);
-            }
-            if (s[i] == 'B')
-            {
-                y = max(i, y);
-            }
+            cin >> arr[i];
         }
-        if (x > y)
+        fav = arr[x - 1];
+        sort(allr(arr));
+        for (int i = 0; i < n; i++)
         {
-            cout << 0 << el;
+            if (arr[i] > fav) 
+            {
+                cnt1++;
+            }
+            else if (arr[i] == fav) 
+            {
+                cnt2++;
+            }
         }
-        else
+        if (cnt1 >= k)
         {
-            cout << y - x << el;
+            cout << "NO" << el;
         }
-	}
+        else if (cnt1 + cnt2 <= k) 
+        {
+            cout << "YES" << el;
+        }
+        else {
+            cout << "MAYBE" << el;
+        }
+    }
 }

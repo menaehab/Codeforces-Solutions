@@ -17,32 +17,25 @@ using namespace std;
 int main()
 {
 	speedup;
-	int t;
-	cin >> t;
-	while (t--)
-	{
-        int n;
-        string s;
-        cin >> n >> s;
-        int x = n, y = 0;
-        for (int i = 0; i < n; i++)
+    vector<string> v(21);
+    for (auto& e : v)
+    { 
+        cin >> e;
+    }
+    int ans = 0;
+    for (int i = 0; i < 18; i++)
+    {
+        for (int j = 0; j < 18; j++)
         {
-            if (s[i] == 'A')
+            int cnt = 0;
+            for (int k = 0; k < 4; k++)
             {
-                x = min(i, x);
+                for (int l = 0; l < 4; l++) {
+                    cnt += v[i + l][j + k] - '0';
+                }
             }
-            if (s[i] == 'B')
-            {
-                y = max(i, y);
-            }
+            ans = max(ans, cnt);
         }
-        if (x > y)
-        {
-            cout << 0 << el;
-        }
-        else
-        {
-            cout << y - x << el;
-        }
-	}
+    }
+    cout << ans;
 }

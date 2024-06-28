@@ -21,28 +21,18 @@ int main()
 	cin >> t;
 	while (t--)
 	{
-        int n;
-        string s;
-        cin >> n >> s;
-        int x = n, y = 0;
+        int n, res = INT_MAX, mx;
+        cin >> n;
+        vector<int>arr(n);
         for (int i = 0; i < n; i++)
         {
-            if (s[i] == 'A')
-            {
-                x = min(i, x);
-            }
-            if (s[i] == 'B')
-            {
-                y = max(i, y);
-            }
+            cin >> arr[i];
         }
-        if (x > y)
+        for (int i = 0; i < n - 1; i++) 
         {
-            cout << 0 << el;
+            mx = max(arr[i], arr[i + 1]);
+            res = min(res, mx);
         }
-        else
-        {
-            cout << y - x << el;
-        }
+        cout << res - 1 << el;
 	}
 }

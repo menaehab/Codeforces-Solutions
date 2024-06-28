@@ -8,7 +8,7 @@
 #include <string>
 #define speedup ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 #define ll long long
-#define el "\n"
+#define el '\n';
 #define all(arr) arr.begin(), arr.end()
 #define allr(arr) arr.rbegin(), arr.rend()
 #define in freopen("input.in", "r", stdin);
@@ -17,32 +17,33 @@ using namespace std;
 int main()
 {
 	speedup;
-	int t;
-	cin >> t;
-	while (t--)
-	{
+    int t;
+    cin >> t;
+    while (t--) {
         int n;
         string s;
         cin >> n >> s;
-        int x = n, y = 0;
-        for (int i = 0; i < n; i++)
+        bool flag = true;
+        if (n % 3 == 2) 
         {
-            if (s[i] == 'A')
+            cout << "NO" << el;
+            continue;
+        }
+        for (int i = 1; i < n; i += 3) 
+        {
+            if (s[i] != s[i + 1])
             {
-                x = min(i, x);
-            }
-            if (s[i] == 'B')
-            {
-                y = max(i, y);
+                flag = false;
+                break;
             }
         }
-        if (x > y)
+        if (flag) 
         {
-            cout << 0 << el;
+            cout << "YES" << el;
         }
-        else
+        else 
         {
-            cout << y - x << el;
+            cout << "NO" << el;
         }
-	}
+    }
 }

@@ -17,32 +17,24 @@ using namespace std;
 int main()
 {
 	speedup;
-	int t;
-	cin >> t;
-	while (t--)
-	{
-        int n;
-        string s;
-        cin >> n >> s;
-        int x = n, y = 0;
-        for (int i = 0; i < n; i++)
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, m, res = 0;
+        string x, txt = "ABCDEFG";
+        cin >> n >> m >> x;
+        map<char, int> mp;
+        for (char i : x) 
         {
-            if (s[i] == 'A')
+            mp[i]++;
+        }
+        for (char i : txt)
+        {
+            if (mp[i] < m) 
             {
-                x = min(i, x);
-            }
-            if (s[i] == 'B')
-            {
-                y = max(i, y);
+                res += (m - mp[i]);
             }
         }
-        if (x > y)
-        {
-            cout << 0 << el;
-        }
-        else
-        {
-            cout << y - x << el;
-        }
-	}
+        cout << res << el;
+    }
 }

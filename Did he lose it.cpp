@@ -21,28 +21,22 @@ int main()
 	cin >> t;
 	while (t--)
 	{
-        int n;
-        string s;
-        cin >> n >> s;
-        int x = n, y = 0;
-        for (int i = 0; i < n; i++)
-        {
-            if (s[i] == 'A')
-            {
-                x = min(i, x);
-            }
-            if (s[i] == 'B')
-            {
-                y = max(i, y);
-            }
-        }
-        if (x > y)
-        {
-            cout << 0 << el;
-        }
-        else
-        {
-            cout << y - x << el;
-        }
+		ll n, x = -1, y = -1;;
+		cin >> n;
+		vector<int>arr(n);
+		for (int i = 0; i < n; i++)
+		{
+			cin >> arr[i];
+			if (arr[i] > 0 && x == -1)
+				x = i;
+			if (arr[i] > 0)
+				y = i;
+		}
+		if (y == -1)
+		{
+			cout << n * (n + 1) / 2 << el;
+			continue;
+		}
+		cout << ((x + 1) * (n - y)) << el;
 	}
 }

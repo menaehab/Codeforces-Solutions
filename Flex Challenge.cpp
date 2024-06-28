@@ -14,6 +14,7 @@
 #define in freopen("input.in", "r", stdin);
 #define out freopen("output.out", "w", stdout);
 using namespace std;
+const int MOD = 1e9 + 7;
 int main()
 {
 	speedup;
@@ -21,28 +22,20 @@ int main()
 	cin >> t;
 	while (t--)
 	{
-        int n;
-        string s;
-        cin >> n >> s;
-        int x = n, y = 0;
-        for (int i = 0; i < n; i++)
-        {
-            if (s[i] == 'A')
-            {
-                x = min(i, x);
-            }
-            if (s[i] == 'B')
-            {
-                y = max(i, y);
-            }
-        }
-        if (x > y)
-        {
-            cout << 0 << el;
-        }
-        else
-        {
-            cout << y - x << el;
-        }
+		int n;
+		cin >> n;
+		vector<int>arr(n);
+		for (int i = 0; i < n; i++)
+		{
+			cin >> arr[i];
+		}
+		sort(all(arr));
+		ll res = 1;
+		arr[n - 1]--;
+		for (int i = 0; i < n; i++) 
+		{
+			res = (arr[i] * res) % MOD;
+		}
+		cout << res << el;
 	}
 }
