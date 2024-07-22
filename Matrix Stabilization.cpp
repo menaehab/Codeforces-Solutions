@@ -210,26 +210,68 @@ int main()
 	speedup;
 	int t;
 	cin >> t;
-	for (int d = 1; d <= t; d++) 
+	while (t--)
 	{
-		int n;
-		cin >> n;
-		int x1, x2, y1, y2, mx1 = INT_MIN, my1 = INT_MIN, mx2 = INT_MAX, my2 = INT_MAX;
+		int n, m;
+		cin >> n >> m;
+		vector<vector<int>> arr(n, vector<int>(m));
 		for (int i = 0; i < n; i++)
 		{
-			cin >> x1 >> y1 >> x2 >> y2;
-			mx1 = max(mx1, x1);
-			my1 = max(my1, y1);
-			mx2 = min(mx2, x2);
-			my2 = min(my2, y2);
+			for (int j = 0; j < m; j++) 
+			{
+				cin >> arr[i][j];
+			}
 		}
-		if (mx2 > mx1 && my2 > my1)
+		for (int i = 0; i < n; i++) 
 		{
-			cout << "Case #" << d <<": " << (mx2 - mx1) * (my2 - my1) << el;
+			for (int j = 0; j < m; j++)
+			{
+				int val = 0;
+				bool flag = true;
+				if (i - 1 >= 0) 
+				{
+					val = max(val, arr[i - 1][j]);
+				}
+				if (j - 1 >= 0)
+				{
+					val = max(val, arr[i][j - 1]);
+				}
+				if (j + 1 < m) 
+				{
+					val = max(val, arr[i][j + 1]);
+				}
+				if (i + 1 < n) {
+					val = max(val, arr[i + 1][j]);
+				}
+				if (i - 1 >= 0 && arr[i][j] <= arr[i - 1][j])
+				{
+					flag = false;
+				}
+				if (j - 1 >= 0 && arr[i][j] <= arr[i][j - 1]) 
+				{
+					flag = false;
+				}
+				if (j + 1 < m && arr[i][j] <= arr[i][j + 1]) 
+				{ 
+					flag = false;
+				}
+				if (i + 1 < n && arr[i][j] <= arr[i + 1][j])
+				{ 
+					flag = false;
+				}
+				if (flag)
+				{
+					arr[i][j] = val;
+				}
+			}
 		}
-		else
+		for (int i = 0; i < n; i++) 
 		{
-			cout << "Case #" << d << ": " << 0 << el;
+			for (int j = 0; j < m; j++) 
+			{
+				cout << arr[i][j] << " ";
+			}
+			cout << el; 
 		}
 	}
 }

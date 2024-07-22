@@ -205,31 +205,28 @@ int findFirstBit1(int n)
 	}
 	return idx;
 }
+int cnt = 1;
+int sol(int n)
+{
+	if (n == 1)
+	{
+		return cnt;
+	}
+	if (n % 2 == 0)
+	{
+		cnt++;
+		return sol(n / 2);
+	}
+	else
+	{
+		cnt++;
+		return sol(3 * n + 1);
+	}
+}
 int main()
 {
 	speedup;
-	int t;
-	cin >> t;
-	for (int d = 1; d <= t; d++) 
-	{
-		int n;
-		cin >> n;
-		int x1, x2, y1, y2, mx1 = INT_MIN, my1 = INT_MIN, mx2 = INT_MAX, my2 = INT_MAX;
-		for (int i = 0; i < n; i++)
-		{
-			cin >> x1 >> y1 >> x2 >> y2;
-			mx1 = max(mx1, x1);
-			my1 = max(my1, y1);
-			mx2 = min(mx2, x2);
-			my2 = min(my2, y2);
-		}
-		if (mx2 > mx1 && my2 > my1)
-		{
-			cout << "Case #" << d <<": " << (mx2 - mx1) * (my2 - my1) << el;
-		}
-		else
-		{
-			cout << "Case #" << d << ": " << 0 << el;
-		}
-	}
+	int n;
+	cin >> n;
+	cout << sol(n);
 }

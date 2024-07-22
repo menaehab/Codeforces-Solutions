@@ -8,8 +8,6 @@
 #include <string>
 #include <set>
 #include <queue>
-#include <unordered_map>
-#include <unordered_set>
 #define speedup ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 #define ll long long
 #define el "\n"
@@ -19,46 +17,6 @@
 #define out freopen("output.out", "w", stdout);
 #define pi 3.141592653589793230
 using namespace std;
-const int sz = 1e6 + 10;
-bool composite[sz];
-vector<ll>primes;
-void sieve()
-{
-	composite[0] = composite[1] = true;
-	for (int i = 2; i * i <= sz; i++)
-	{
-		if (!composite[i])
-		{
-			for (int j = i * i; j <= sz; j += i)
-			{
-				composite[j] = true;
-			}
-		}
-	}
-}
-void linearSieve(int n)
-{
-	composite[0] = composite[1] = true;
-	for (int i = 2; i <= n; i++)
-	{
-		if (!composite[i])
-		{
-			primes.push_back(i);
-		}
-		for (int j = 0; j < primes.size(); j++)
-		{
-			if (i * primes[j] > n)
-			{
-				break;
-			}
-			composite[i * primes[j]] = true;
-			if (i % primes[j] == 0)
-			{
-				break;
-			}
-		}
-	}
-}
 int gcd(int a, int b)
 {
 	if (b == 0)
@@ -97,19 +55,6 @@ bool isPalindrome(string s)
 	else
 		return false;
 }
-int binarySearch(vector<int>arr, int low, int high, int x)
-{
-	while (low <= high) {
-		int mid = low + (high - low) / 2;
-		if (arr[mid] == x)
-			return mid;
-		if (arr[mid] < x)
-			low = mid + 1;
-		else
-			high = mid - 1;
-	}
-	return -1;
-}
 void printBinary(int x)
 {
 	if (x <= 1)
@@ -129,17 +74,6 @@ int countBits1(int x)
 		x &= (x - 1);
 	}
 	return cnt;
-}
-int countBits0(int x)
-{
-	int cnt = 0;
-	int bits = sizeof(x) * 8;
-	while (x)
-	{
-		cnt++;
-		x &= (x - 1);
-	}
-	return bits - cnt;
 }
 int getBit(int x, int idx)
 {
@@ -187,7 +121,7 @@ int setBitsTo0Until1(int n)
 	}
 	return n;
 }
-int findFirstBit0(int n)
+int findFirstBit0(int n) 
 {
 	int idx = 0;
 	while (getBit(n, idx) != 0)
@@ -196,10 +130,10 @@ int findFirstBit0(int n)
 	}
 	return idx;
 }
-int findFirstBit1(int n)
+int findFirstBit1(int n) 
 {
 	int idx = 0;
-	while (getBit(n, idx) == 0)
+	while (getBit(n, idx) == 0) 
 	{
 		idx++;
 	}
@@ -208,28 +142,18 @@ int findFirstBit1(int n)
 int main()
 {
 	speedup;
-	int t;
-	cin >> t;
-	for (int d = 1; d <= t; d++) 
+	int n;
+	cin >> n;
+	if (n == 63)
 	{
-		int n;
-		cin >> n;
-		int x1, x2, y1, y2, mx1 = INT_MIN, my1 = INT_MIN, mx2 = INT_MAX, my2 = INT_MAX;
-		for (int i = 0; i < n; i++)
-		{
-			cin >> x1 >> y1 >> x2 >> y2;
-			mx1 = max(mx1, x1);
-			my1 = max(my1, y1);
-			mx2 = min(mx2, x2);
-			my2 = min(my2, y2);
-		}
-		if (mx2 > mx1 && my2 > my1)
-		{
-			cout << "Case #" << d <<": " << (mx2 - mx1) * (my2 - my1) << el;
-		}
-		else
-		{
-			cout << "Case #" << d << ": " << 0 << el;
-		}
+		cout << "=";
+	}
+	else if (n < 63)
+	{
+		cout << "<";
+	}
+	else if (n > 63)
+	{
+		cout << ">";
 	}
 }

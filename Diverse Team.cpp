@@ -208,28 +208,33 @@ int findFirstBit1(int n)
 int main()
 {
 	speedup;
-	int t;
-	cin >> t;
-	for (int d = 1; d <= t; d++) 
+	int n, k;
+	cin >> n >> k;
+	vector<int>arr(n);
+	vector<pair<int, int>>res;
+	map<int, int>mp;
+	for (int i = 0; i < n; i++)
 	{
-		int n;
-		cin >> n;
-		int x1, x2, y1, y2, mx1 = INT_MIN, my1 = INT_MIN, mx2 = INT_MAX, my2 = INT_MAX;
-		for (int i = 0; i < n; i++)
+		cin >> arr[i];
+	}
+	for (int i = 0; i < n; i++)
+	{
+		if (!mp[arr[i]])
 		{
-			cin >> x1 >> y1 >> x2 >> y2;
-			mx1 = max(mx1, x1);
-			my1 = max(my1, y1);
-			mx2 = min(mx2, x2);
-			my2 = min(my2, y2);
+			mp[arr[i]]++;
+			res.push_back({ arr[i], i + 1 });
 		}
-		if (mx2 > mx1 && my2 > my1)
+	}
+	if (res.size() < k)
+	{
+		cout << "NO";
+	}
+	else
+	{
+		cout << "YES" << el;
+		for (int i = 0; i < k; i++)
 		{
-			cout << "Case #" << d <<": " << (mx2 - mx1) * (my2 - my1) << el;
-		}
-		else
-		{
-			cout << "Case #" << d << ": " << 0 << el;
+			cout << res[i].second << " ";
 		}
 	}
 }

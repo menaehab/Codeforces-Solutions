@@ -210,26 +210,31 @@ int main()
 	speedup;
 	int t;
 	cin >> t;
-	for (int d = 1; d <= t; d++) 
+	while (t--)
 	{
 		int n;
 		cin >> n;
-		int x1, x2, y1, y2, mx1 = INT_MIN, my1 = INT_MIN, mx2 = INT_MAX, my2 = INT_MAX;
-		for (int i = 0; i < n; i++)
+		string s;
+		cin >> s;
+		ll res = 0;
+		for (int i = 0; i < n; ++i)
 		{
-			cin >> x1 >> y1 >> x2 >> y2;
-			mx1 = max(mx1, x1);
-			my1 = max(my1, y1);
-			mx2 = min(mx2, x2);
-			my2 = min(my2, y2);
+			if (s[i] == '@')
+			{
+				res++;
+			}
+			else if (s[i] == '*')
+			{
+				if (i + 1 < n && s[i + 1] == '*')
+				{
+					break;
+				}
+				else if (i - 1 >= 0 && s[i - 1] == '*')
+				{
+					break;
+				}
+			}
 		}
-		if (mx2 > mx1 && my2 > my1)
-		{
-			cout << "Case #" << d <<": " << (mx2 - mx1) * (my2 - my1) << el;
-		}
-		else
-		{
-			cout << "Case #" << d << ": " << 0 << el;
-		}
+		cout << res << el;
 	}
 }

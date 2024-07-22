@@ -205,31 +205,54 @@ int findFirstBit1(int n)
 	}
 	return idx;
 }
+vector<vector<ll>> prefixSum2D(vector<vector<ll>>& a)
+{
+	int R = a.size();  
+	int C = a[0].size();  
+	vector<vector<ll>> psa(R, vector<ll>(C, 0));  
+	psa[0][0] = a[0][0];
+	for (int i = 1; i < C; i++)
+		psa[0][i] = psa[0][i - 1] + a[0][i];
+	for (int i = 1; i < R; i++)
+		psa[i][0] = psa[i - 1][0] + a[i][0];
+	for (int i = 1; i < R; i++) {
+		for (int j = 1; j < C; j++) {
+			psa[i][j] = psa[i - 1][j] + psa[i][j - 1] - psa[i - 1][j - 1] + a[i][j];
+		}
+	}
+	return psa;
+}
 int main()
 {
 	speedup;
-	int t;
-	cin >> t;
-	for (int d = 1; d <= t; d++) 
+	int n, m,q;
+	cin >> n >> m >> q;
+	vector<vector<ll>>arr(n, vector<ll>(m));
+	for (int i = 0; i < n; i++)
 	{
-		int n;
-		cin >> n;
-		int x1, x2, y1, y2, mx1 = INT_MIN, my1 = INT_MIN, mx2 = INT_MAX, my2 = INT_MAX;
-		for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
 		{
-			cin >> x1 >> y1 >> x2 >> y2;
-			mx1 = max(mx1, x1);
-			my1 = max(my1, y1);
-			mx2 = min(mx2, x2);
-			my2 = min(my2, y2);
+			cin >> arr[i][j];
 		}
-		if (mx2 > mx1 && my2 > my1)
+	}
+	vector<vector<ll>>prfx = prefixSum2D(arr);
+	while (q--)
+	{
+		ll x1, y1, x2, y2;
+		cin >> x1 >> y1 >> x2 >> y2;
+	    ll res = prfx[x2 - 1][y2 - 1];
+		if (x1 > 1) 
 		{
-			cout << "Case #" << d <<": " << (mx2 - mx1) * (my2 - my1) << el;
+			res -= prfx[x1 - 2][y2 - 1];
 		}
-		else
+		if (y1 > 1) 
 		{
-			cout << "Case #" << d << ": " << 0 << el;
+			res -= prfx[x2 - 1][y1 - 2];
 		}
+		if (x1 > 1 && y1 > 1) 
+		{
+			res += prfx[x1 - 2][y1 - 2];
+		}
+		cout << res << el;
 	}
 }

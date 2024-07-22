@@ -210,26 +210,43 @@ int main()
 	speedup;
 	int t;
 	cin >> t;
-	for (int d = 1; d <= t; d++) 
+	while (t--)
 	{
 		int n;
 		cin >> n;
-		int x1, x2, y1, y2, mx1 = INT_MIN, my1 = INT_MIN, mx2 = INT_MAX, my2 = INT_MAX;
+		vector<int>arr(n);
 		for (int i = 0; i < n; i++)
 		{
-			cin >> x1 >> y1 >> x2 >> y2;
-			mx1 = max(mx1, x1);
-			my1 = max(my1, y1);
-			mx2 = min(mx2, x2);
-			my2 = min(my2, y2);
+			cin >> arr[i];
 		}
-		if (mx2 > mx1 && my2 > my1)
+		sort(all(arr));
+		bool flag = true;
+		int r = n - 1, l = 0,cntB = 1,cntR = 1;
+		ll sumR = arr[r], sumB = arr[l];
+		for (int i = 1; i < r; i++)
 		{
-			cout << "Case #" << d <<": " << (mx2 - mx1) * (my2 - my1) << el;
+			sumB += arr[i];
+			cntB++;
+			if (cntR < cntB && sumR > sumB)
+			{
+				cout << "YES" << el;
+				flag = false;
+				break;
+			}
+			else if (sumB >= sumR)
+			{
+				cntR++;
+				r--;
+				sumR += arr[r];
+			}
 		}
-		else
+		if (cntR < cntB && sumR > sumB && flag)
 		{
-			cout << "Case #" << d << ": " << 0 << el;
+			cout << "YES" << el;
+		}
+		else if (flag)
+		{
+			cout << "NO" << el;
 		}
 	}
 }

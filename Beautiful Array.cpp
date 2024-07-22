@@ -210,26 +210,76 @@ int main()
 	speedup;
 	int t;
 	cin >> t;
-	for (int d = 1; d <= t; d++) 
+	while (t--)
 	{
-		int n;
-		cin >> n;
-		int x1, x2, y1, y2, mx1 = INT_MIN, my1 = INT_MIN, mx2 = INT_MAX, my2 = INT_MAX;
+		int n, k, cnt = 0, val = -1,res = 0;
+		bool flag = true;
+		cin >> n >> k;
+		vector<int>arr(n);
+		map<int, set<int>>mp;
 		for (int i = 0; i < n; i++)
 		{
-			cin >> x1 >> y1 >> x2 >> y2;
-			mx1 = max(mx1, x1);
-			my1 = max(my1, y1);
-			mx2 = min(mx2, x2);
-			my2 = min(my2, y2);
+			cin >> arr[i];
 		}
-		if (mx2 > mx1 && my2 > my1)
+		for (int i : arr)
 		{
-			cout << "Case #" << d <<": " << (mx2 - mx1) * (my2 - my1) << el;
+			if (mp[i%k].find(i) != mp[i%k].end())
+			{
+				mp[i % k].erase(i);
+			}
+			else
+			{
+				mp[i % k].insert(i);
+			}
 		}
-		else
+		for (auto i : mp)
 		{
-			cout << "Case #" << d << ": " << 0 << el;
+			int n = i.second.size();
+			if (n % 2)
+			{
+				cnt++;
+				val = i.first;
+			}
+		}
+		if (cnt > 1) 
+		{
+			cout << -1 << el;
+			continue;
+		}
+		for (auto i : mp)
+		{
+			if (i.first == val)
+			{
+				continue;
+			}
+			while (i.second.size() > 0)
+			{
+				int x = *i.second.begin();
+				i.second.erase(x);
+				int tmp = *i.second.begin();
+				res += (tmp - x) / k;
+				i.second.erase(tmp);
+			}
+		}
+		if (cnt)
+		{
+			vector<int>arr;
+			for (auto i : mp[val])
+			{
+				arr.push_back(i);
+			}
+			int tt = arr.size();
+			if (tt == 1)
+			{
+				cout << res << el;
+				continue;
+			}
+			vector<int>prefx(n), sufx(n);
+			prefx[1] = arr[1] - arr[0];
+			for (int i = 0; i < n - 1; i++)
+			{
+
+			}
 		}
 	}
 }

@@ -205,31 +205,47 @@ int findFirstBit1(int n)
 	}
 	return idx;
 }
+int n, m;
+void sol(vector<vector<int>>& a, vector<vector<int>>& b, vector<vector<int>>& res, int x, int y)
+{
+	if (x == n) 
+	{
+		return;
+	}
+	if (y == m) 
+	{
+		sol(a, b, res, x + 1, 0);
+		return;
+	}
+	res[x][y] = a[x][y] + b[x][y];
+	sol(a, b, res, x, y + 1);
+}
 int main()
 {
 	speedup;
-	int t;
-	cin >> t;
-	for (int d = 1; d <= t; d++) 
+	cin >> n >> m;
+	vector<vector<int>>a(n, vector<int>(m)), b(n, vector<int>(m)), res(n, vector<int>(m));
+	for (int i = 0; i < n; i++)
 	{
-		int n;
-		cin >> n;
-		int x1, x2, y1, y2, mx1 = INT_MIN, my1 = INT_MIN, mx2 = INT_MAX, my2 = INT_MAX;
-		for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
 		{
-			cin >> x1 >> y1 >> x2 >> y2;
-			mx1 = max(mx1, x1);
-			my1 = max(my1, y1);
-			mx2 = min(mx2, x2);
-			my2 = min(my2, y2);
+			cin >> a[i][j];
 		}
-		if (mx2 > mx1 && my2 > my1)
+	}
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
 		{
-			cout << "Case #" << d <<": " << (mx2 - mx1) * (my2 - my1) << el;
+			cin >> b[i][j];
 		}
-		else
+	}
+	sol(a, b, res, 0, 0);
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
 		{
-			cout << "Case #" << d << ": " << 0 << el;
+			cout << res[i][j] << " ";
 		}
+		cout << el;
 	}
 }

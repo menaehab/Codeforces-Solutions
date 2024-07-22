@@ -19,46 +19,6 @@
 #define out freopen("output.out", "w", stdout);
 #define pi 3.141592653589793230
 using namespace std;
-const int sz = 1e6 + 10;
-bool composite[sz];
-vector<ll>primes;
-void sieve()
-{
-	composite[0] = composite[1] = true;
-	for (int i = 2; i * i <= sz; i++)
-	{
-		if (!composite[i])
-		{
-			for (int j = i * i; j <= sz; j += i)
-			{
-				composite[j] = true;
-			}
-		}
-	}
-}
-void linearSieve(int n)
-{
-	composite[0] = composite[1] = true;
-	for (int i = 2; i <= n; i++)
-	{
-		if (!composite[i])
-		{
-			primes.push_back(i);
-		}
-		for (int j = 0; j < primes.size(); j++)
-		{
-			if (i * primes[j] > n)
-			{
-				break;
-			}
-			composite[i * primes[j]] = true;
-			if (i % primes[j] == 0)
-			{
-				break;
-			}
-		}
-	}
-}
 int gcd(int a, int b)
 {
 	if (b == 0)
@@ -208,28 +168,37 @@ int findFirstBit1(int n)
 int main()
 {
 	speedup;
-	int t;
-	cin >> t;
-	for (int d = 1; d <= t; d++) 
+	int n, t;
+	cin >> n >> t;
+	vector<int>arr(n);
+	for (int i = 0; i < n; i++)
 	{
-		int n;
-		cin >> n;
-		int x1, x2, y1, y2, mx1 = INT_MIN, my1 = INT_MIN, mx2 = INT_MAX, my2 = INT_MAX;
-		for (int i = 0; i < n; i++)
-		{
-			cin >> x1 >> y1 >> x2 >> y2;
-			mx1 = max(mx1, x1);
-			my1 = max(my1, y1);
-			mx2 = min(mx2, x2);
-			my2 = min(my2, y2);
+		cin >> arr[i];
+	}
+	sort(all(arr));
+	while (t--)
+	{
+		int x;
+		cin >> x;
+		int low = 0, high = n - 1;
+		while (high > low) {
+			int mid = (low + high) / 2;
+			if (arr[mid] < x) 
+			{
+				low = mid + 1;
+			}
+			else 
+			{
+				high = mid;
+			}
 		}
-		if (mx2 > mx1 && my2 > my1)
+		if (low > 0 && abs(x - arr[low - 1]) <= abs(x - arr[low])) 
 		{
-			cout << "Case #" << d <<": " << (mx2 - mx1) * (my2 - my1) << el;
+			cout << arr[low - 1] << el;
 		}
-		else
+		else 
 		{
-			cout << "Case #" << d << ": " << 0 << el;
+			cout << arr[low] << el;
 		}
 	}
 }
