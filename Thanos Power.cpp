@@ -210,95 +210,14 @@ int main()
 	speedup;
 	string s;
 	cin >> s;
-	map<char, ll>mp;
-	for (char i = 'a'; i <= 'z'; i++)
+	unordered_map<ll, ll> x, y; 
+	x[0] = s[0] - '0';
+	y[0] = 11 - (s[0] - '0'); 
+	for (int i = 1; i < s.size(); i++)
 	{
-		ll k;
-		cin >> k;
-		mp[i] = k;
+		x[i] = min(x[i - 1], y[i - 1]) + (s[i] - '0'); 
+		y[i] = min(x[i - 1] + 2, y[i - 1]) + 9 - (s[i] - '0');
 	}
-	ll res = 0;
-	int n = s.size();
-	for (int i = 0; i < n; i++) 
-	{
-		if (s[i] == '?') 
-		{
-			int cnt = 0;
-			while (i + cnt < n && s[i + cnt] == '?')
-			{
-				cnt++;
-			}
-			if (i == 0 && i + cnt == n) 
-			{
-				cout << 0 << el;
-				for (int j = 0; j < n; j++) 
-				{
-					cout << 'a';
-				}
-				return 0;
-			}
-			else if (i == 0) 
-			{
-				int mn = INT_MAX, idx;
-				for (int z = 0; z < 26; z++) 
-				{
-					int c = abs(mp[s[cnt]] - mp['a' + z]);
-					if (mn > c)
-					{
-						mn = c;
-						idx = z;
-					}
-				}
-				char re = 'a' + idx;
-				for (int j = 0; j < cnt; j++)
-				{
-					s[j] = re;
-				}
-				i += cnt - 1;
-			}
-			else if (i + cnt == n)
-			{
-				int mn = INT_MAX, idx;
-				for (int z = 0; z < 26; z++)
-				{
-					int c = abs(mp[s[i - 1]] - mp['a' + z]);
-					if (mn > c)
-					{
-						mn = c;
-						idx = z;
-					}
-				}
-				char re = 'a' + idx;
-				for (int j = i; j < n; j++)
-				{
-					s[j] = re;
-				}
-				break;
-			}
-			else
-			{
-				int mn = INT_MAX, idx;
-				for (int x = 0; x < 26; x++) 
-				{
-					int c = abs(mp[s[i - 1]] - mp['a' + x]) + abs(mp['a' + x] - mp[s[i + cnt]]);
-					if (mn > c)
-					{
-						mn = c;
-						idx = x;
-					}
-				}
-				char re = 'a' + idx;
-				for (int j = i; j < i + cnt; j++) 
-				{
-					s[j] = re;
-				}
-				i += cnt - 1;
-			}
-		}
-	}
-	for (int i = 0; i < n - 1; i++)
-	{
-		res += abs(mp[s[i]] - mp[s[i + 1]]);
-	}
-	cout << res << el << s << el;
+	cout << min(x[s.size() - 1], y[s.size() - 1]);
+	
 }

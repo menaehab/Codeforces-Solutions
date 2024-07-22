@@ -205,100 +205,31 @@ int findFirstBit1(int n)
 	}
 	return idx;
 }
+ll n, k;
+bool sol(ll sum, ll idx, vector<ll>arr)
+{
+	if (idx == n)
+	{
+		return sum == k;
+	}
+
+	return sol(sum + arr[idx], idx + 1,arr) || sol(sum - arr[idx], idx + 1,arr);
+}
 int main()
 {
 	speedup;
-	string s;
-	cin >> s;
-	map<char, ll>mp;
-	for (char i = 'a'; i <= 'z'; i++)
+	cin >> n >> k;
+	vector<ll>arr(n);
+	for (int i = 0; i < n; i++)
 	{
-		ll k;
-		cin >> k;
-		mp[i] = k;
+		cin >> arr[i];
 	}
-	ll res = 0;
-	int n = s.size();
-	for (int i = 0; i < n; i++) 
+	if (sol(arr[0],1,arr))
 	{
-		if (s[i] == '?') 
-		{
-			int cnt = 0;
-			while (i + cnt < n && s[i + cnt] == '?')
-			{
-				cnt++;
-			}
-			if (i == 0 && i + cnt == n) 
-			{
-				cout << 0 << el;
-				for (int j = 0; j < n; j++) 
-				{
-					cout << 'a';
-				}
-				return 0;
-			}
-			else if (i == 0) 
-			{
-				int mn = INT_MAX, idx;
-				for (int z = 0; z < 26; z++) 
-				{
-					int c = abs(mp[s[cnt]] - mp['a' + z]);
-					if (mn > c)
-					{
-						mn = c;
-						idx = z;
-					}
-				}
-				char re = 'a' + idx;
-				for (int j = 0; j < cnt; j++)
-				{
-					s[j] = re;
-				}
-				i += cnt - 1;
-			}
-			else if (i + cnt == n)
-			{
-				int mn = INT_MAX, idx;
-				for (int z = 0; z < 26; z++)
-				{
-					int c = abs(mp[s[i - 1]] - mp['a' + z]);
-					if (mn > c)
-					{
-						mn = c;
-						idx = z;
-					}
-				}
-				char re = 'a' + idx;
-				for (int j = i; j < n; j++)
-				{
-					s[j] = re;
-				}
-				break;
-			}
-			else
-			{
-				int mn = INT_MAX, idx;
-				for (int x = 0; x < 26; x++) 
-				{
-					int c = abs(mp[s[i - 1]] - mp['a' + x]) + abs(mp['a' + x] - mp[s[i + cnt]]);
-					if (mn > c)
-					{
-						mn = c;
-						idx = x;
-					}
-				}
-				char re = 'a' + idx;
-				for (int j = i; j < i + cnt; j++) 
-				{
-					s[j] = re;
-				}
-				i += cnt - 1;
-			}
-		}
+		cout << "YES";
 	}
-	for (int i = 0; i < n - 1; i++)
+	else
 	{
-		res += abs(mp[s[i]] - mp[s[i + 1]]);
+		cout << "NO";
 	}
-	cout << res << el << s << el;
 }
