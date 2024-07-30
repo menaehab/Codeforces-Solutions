@@ -20,12 +20,13 @@
 #define pi 3.141592653589793230
 using namespace std;
 int main() {
-    string s;
-    cin >> s;
-    ll res = 0;
-    for (int i = 0; i < s.size(); ++i) {
-        res += s[i] - '0';
+    vector<int>arr(4);
+    for (int i = 0; i < 4; ++i) {
+        cin >> arr[i];
     }
-    cout << res << el;
+    sort(all(arr));
+    for (int i = 0; i < 4; ++i) {
+        cout << arr[i] << " ";
+    }
     return 0;
 }

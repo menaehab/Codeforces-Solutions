@@ -20,12 +20,26 @@
 #define pi 3.141592653589793230
 using namespace std;
 int main() {
-    string s;
-    cin >> s;
-    ll res = 0;
-    for (int i = 0; i < s.size(); ++i) {
-        res += s[i] - '0';
+    int n;
+    cin >> n;
+    vector<int>a(n),b(n),pfx1(n + 1),pfx2(n + 2);
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+        pfx1[i + 1] = pfx1[i] + a[i];
     }
-    cout << res << el;
+    for (int i = 0; i < n; ++i) {
+        cin >> b[i];
+        pfx2[i + 1] = pfx2[i] + b[i];
+    }
+    int res = 0,tmp = 0;
+    for (int i = 1; i <= n; ++i) {
+        if (pfx1[i] > pfx2[i]) {
+            tmp++;
+        } else {
+            res = max(res,tmp);
+            tmp = 0;
+        }
+    }
+    cout << res;
     return 0;
 }

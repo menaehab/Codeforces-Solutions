@@ -20,12 +20,21 @@
 #define pi 3.141592653589793230
 using namespace std;
 int main() {
-    string s;
-    cin >> s;
-    ll res = 0;
-    for (int i = 0; i < s.size(); ++i) {
-        res += s[i] - '0';
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, k;
+        cin >> n >> k;
+        vector<string>s(n);
+        for (int i = 0; i < n; i++) {
+            cin >> s[i];
+        }
+        for (int i = 0; i < n; i += k) {
+            for (int j = 0; j < n; j += k) {
+                cout << s[i][j];
+            }
+            cout << el;
+        }
     }
-    cout << res << el;
     return 0;
 }

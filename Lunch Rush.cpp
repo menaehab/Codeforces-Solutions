@@ -20,12 +20,18 @@
 #define pi 3.141592653589793230
 using namespace std;
 int main() {
-    string s;
-    cin >> s;
-    ll res = 0;
-    for (int i = 0; i < s.size(); ++i) {
-        res += s[i] - '0';
+    int n,k,res = INT_MIN,mx;
+    cin >> n >> k;
+    while (n--) {
+        int f,t;
+        cin >> f >> t;
+        if (t > k) {
+            mx = f-(t-k);
+        } else {
+            mx = f;
+        }
+        res = max(res,mx);
     }
-    cout << res << el;
+    cout << res;
     return 0;
 }

@@ -20,12 +20,22 @@
 #define pi 3.141592653589793230
 using namespace std;
 int main() {
+    unordered_map<int,string>mp ={
+        {0,"O-|-OOOO"},
+        {1,"O-|O-OOO"},
+        {2,"O-|OO-OO"},
+        {3,"O-|OOO-O"},
+        {4,"O-|OOOO-"},
+        {5,"-O|-OOOO"},
+        {6,"-O|O-OOO"},
+        {7,"-O|OO-OO"},
+        {8,"-O|OOO-O"},
+        {9,"-O|OOOO-"},
+    };
     string s;
     cin >> s;
-    ll res = 0;
-    for (int i = 0; i < s.size(); ++i) {
-        res += s[i] - '0';
+    for (int i = s.size() - 1; i >= 0; --i) {
+        cout << mp[s[i] - '0'] << el;
     }
-    cout << res << el;
     return 0;
 }

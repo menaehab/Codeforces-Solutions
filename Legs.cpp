@@ -20,12 +20,15 @@
 #define pi 3.141592653589793230
 using namespace std;
 int main() {
-    string s;
-    cin >> s;
-    ll res = 0;
-    for (int i = 0; i < s.size(); ++i) {
-        res += s[i] - '0';
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        int x = n / 4;
+        n-=x * 4;
+        int y = n / 2;
+        cout << x + y << el;
     }
-    cout << res << el;
     return 0;
 }

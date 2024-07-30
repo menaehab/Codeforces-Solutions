@@ -20,12 +20,16 @@
 #define pi 3.141592653589793230
 using namespace std;
 int main() {
-    string s;
-    cin >> s;
-    ll res = 0;
-    for (int i = 0; i < s.size(); ++i) {
-        res += s[i] - '0';
+    int n,res = 0,mn = INT_MAX;
+    cin >> n;
+    vector<pair<int,int>>arr(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i].first >> arr[i].second;
     }
-    cout << res << el;
+    for (int i = 0; i < n; ++i) {
+       mn = min(mn,arr[i].second);
+        res+=arr[i].first * mn;
+    }
+    cout << res;
     return 0;
 }

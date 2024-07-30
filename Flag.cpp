@@ -20,12 +20,28 @@
 #define pi 3.141592653589793230
 using namespace std;
 int main() {
-    string s;
-    cin >> s;
-    ll res = 0;
-    for (int i = 0; i < s.size(); ++i) {
-        res += s[i] - '0';
+    int n,m;
+    cin >> n >> m;
+    vector<string>arr(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
     }
-    cout << res << el;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m - 1; ++j) {
+            if (arr[i][j] != arr[i][j + 1]) {
+                cout << "NO";
+                return 0;
+            }
+        }
+    }
+    for (int i = 0; i < n - 1; ++i) {
+        for (int j = 0; j < m; ++j) {
+            if (arr[i][j] == arr[i + 1][j]) {
+                cout << "NO";
+                return 0;
+            }
+        }
+    }
+    cout << "YES";
     return 0;
 }
