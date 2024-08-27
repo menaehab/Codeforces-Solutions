@@ -7,5 +7,5 @@ Welcome to my Codeforces Solutions repository! This is where I document my journ
 This repository contains solutions to various problems I've solved on Codeforces.
 
 ## 🔗 Connect with Me
-- **Codeforces Profile**: [menaehab](https://codeforces.com/profile/mena.exe)
-- **LinkedIn**: [menaehab](https://www.linkedin.com/in/mena-ehab-262a4b290)
+- **Codeforces Profile**: [Here](https://codeforces.com/profile/mena.exe)
+- **LinkedIn**: [Here](https://www.linkedin.com/in/mena-ehab-262a4b290)
