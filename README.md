@@ -8,4 +8,3 @@ This repository contains solutions to various problems I've solved on Codeforces
 
 ## 🔗 Connect with Me
 - **Codeforces Profile**: [Here](https://codeforces.com/profile/mena.exe)
-- **LinkedIn**: [Here](https://www.linkedin.com/in/mena-ehab-262a4b290)
