@@ -31,11 +31,11 @@ int main()
     setup();
     ll d, s;
     cin >> d >> s;
-    if (s >= d * (2.0 / 3.0))
+    if (s * 3 >= d * 2) 
         cout << "Sunny Day";
-    else if (s >= d * (1.0 / 3.0))
-        cout << "Cloudy Day";
-    else
+    else if (s * 3 <= d) 
         cout << "Rainy Day";
+    else
+        cout << "Cloudy Day";
     return 0;
 }
