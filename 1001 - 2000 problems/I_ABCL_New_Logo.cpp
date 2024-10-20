@@ -29,10 +29,26 @@ void setup()
 int main()
 {
   setup();
-  ll x, y;
-  cin >> x >> y;
-  cout << x << " + " << y << " = " << x + y << el;
-  cout << x << " * " << y << " = " << x * y << el;
-  cout << x << " - " << y << " = " << x - y << el;
+  int n, m;
+  cin >> n >> m;
+  vector<string> arr(n);
+  for (int i = 0; i < n; i++)
+  {
+    cin >> arr[i];
+  }
+  map<char, float> mp;
+  for (int i = 0; i < n; i++)
+  {
+    for (int j = 0; j < m; j++)
+    {
+      mp[arr[i][j]]++;
+    }
+  }
+  for (auto &&i : mp)
+  {
+    cout.precision(2);
+    cout << fixed << i.first << ": " << ((float)i.second / (n * m)) * 100 << el;
+  }
+
   return 0;
 }

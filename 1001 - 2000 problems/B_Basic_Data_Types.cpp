@@ -29,10 +29,16 @@ void setup()
 int main()
 {
   setup();
-  ll x, y;
-  cin >> x >> y;
-  cout << x << " + " << y << " = " << x + y << el;
-  cout << x << " * " << y << " = " << x * y << el;
-  cout << x << " - " << y << " = " << x - y << el;
+  int a;
+  long long b;
+  char c;
+  float d;
+  double e;
+  cin >> a >> b >> c >> d >> e;
+  cout << a << el
+       << b << el
+       << c << el
+       << d << el
+       << e;
   return 0;
 }
