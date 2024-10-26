@@ -29,27 +29,28 @@ void setup()
 int main()
 {
   setup();
-  ll n, k;
-  cin >> n >> k;
-  vector<ll> arr(n);
-  unordered_map<ll, ll> mp;
-  for (ll i = 0; i < n; i++)
+  int n, q;
+  cin >> n >> q;
+  vector<ll> a(n + 1), b(n + 1), p1(n + 1), p2(n + 2);
+  for (int i = 1; i <= n; i++)
   {
-    cin >> arr[i];
-    mp[arr[i]]++;
+    cin >> a[i];
+    p1[i] = p1[i - 1] + a[i];
   }
-  ll cnt = 0;
-  for (ll i = 0; i < n; i++)
+
+  for (int i = 1; i <= n; i++)
   {
-    if (mp[k - arr[i]] > 0)
-    {
-      if (k - arr[i] == arr[i])
-        cnt += mp[k - arr[i]] - 1;
-      else
-        cnt += mp[k - arr[i]];
-    }
-    mp[arr[i]]--;
+    cin >> b[i];
+    p2[i] = p2[i - 1] + b[i];
   }
-  cout << cnt << el;
+  while (q--)
+  {
+    int l, r;
+    cin >> l >> r;
+    if (p1[r] - p1[l - 1] >= p2[r] - p2[l - 1])
+      cout << "CE" << el;
+    else
+      cout << "CS" << el;
+  }
   return 0;
 }

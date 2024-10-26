@@ -29,27 +29,23 @@ void setup()
 int main()
 {
   setup();
-  ll n, k;
-  cin >> n >> k;
-  vector<ll> arr(n);
-  unordered_map<ll, ll> mp;
-  for (ll i = 0; i < n; i++)
+  ll n, sum = 0;
+  cin >> n;
+  vector<ll> arr(n + 1), pfx(n + 2);
+  for (int i = 1; i <= n; i++)
   {
     cin >> arr[i];
-    mp[arr[i]]++;
+    pfx[i] = pfx[i - 1] + arr[i];
   }
-  ll cnt = 0;
-  for (ll i = 0; i < n; i++)
+  for (size_t i = 1; i <= n; i++)
   {
-    if (mp[k - arr[i]] > 0)
+    ll j = arr[i] + i - 1;
+    if (j >= n)
     {
-      if (k - arr[i] == arr[i])
-        cnt += mp[k - arr[i]] - 1;
-      else
-        cnt += mp[k - arr[i]];
+      j = n;
     }
-    mp[arr[i]]--;
+    sum += pfx[j] - pfx[i - 1];
   }
-  cout << cnt << el;
+  cout << sum;
   return 0;
 }

@@ -29,27 +29,6 @@ void setup()
 int main()
 {
   setup();
-  ll n, k;
-  cin >> n >> k;
-  vector<ll> arr(n);
-  unordered_map<ll, ll> mp;
-  for (ll i = 0; i < n; i++)
-  {
-    cin >> arr[i];
-    mp[arr[i]]++;
-  }
-  ll cnt = 0;
-  for (ll i = 0; i < n; i++)
-  {
-    if (mp[k - arr[i]] > 0)
-    {
-      if (k - arr[i] == arr[i])
-        cnt += mp[k - arr[i]] - 1;
-      else
-        cnt += mp[k - arr[i]];
-    }
-    mp[arr[i]]--;
-  }
-  cout << cnt << el;
+  cout << "Yes";
   return 0;
 }
