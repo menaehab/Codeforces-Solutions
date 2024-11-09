@@ -29,25 +29,35 @@ void setup()
 int main()
 {
   setup();
-  ll n, m;
-  cin >> n >> m;
-  vector<ll> a(n), b(m);
-  map<ll, ll> mp;
-  ll ans = 0;
-  for (ll i = 0; i < n; i++)
+  int t;
+  cin >> t;
+  while (t--)
   {
-    cin >> a[i];
+    ll n, ans = 0, o = 0, z = 0;
+    cin >> n;
+    bool flag1 = false, flag2 = false;
+    for (ll i = 0; i <= 30; i++)
+    {
+      if ((n >> i) & 1)
+      {
+        if (!flag1)
+        {
+          ans |= (1 << i);
+          flag1 = true;
+        }
+        o++;
+        continue;
+      }
+      if (!flag2)
+      {
+        z = i;
+        flag2 = true;
+      }
+    }
+    if (o == 1)
+      ans |= (1 << z);
+    cout << ans << el;
   }
-  for (ll i = 0; i < m; i++)
-  {
-    cin >> b[i];
-    mp[b[i]]++;
-  }
-  for (ll i = 0; i < n; i++)
-  {
-    ans += mp[a[i]];
-  }
-  cout << ans;
 
   return 0;
 }

@@ -29,25 +29,32 @@ void setup()
 int main()
 {
   setup();
-  ll n, m;
-  cin >> n >> m;
-  vector<ll> a(n), b(m);
-  map<ll, ll> mp;
-  ll ans = 0;
-  for (ll i = 0; i < n; i++)
+  int t;
+  cin >> t;
+  while (t--)
   {
-    cin >> a[i];
+    int n;
+    cin >> n;
+    priority_queue<int> pq;
+    ll ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+      int x;
+      cin >> x;
+      if (x == 0)
+      {
+        if (!pq.empty())
+        {
+          ans += pq.top();
+          pq.pop();
+        }
+      }
+      else
+      {
+        pq.push(x);
+      }
+    }
+    cout << ans << el;
   }
-  for (ll i = 0; i < m; i++)
-  {
-    cin >> b[i];
-    mp[b[i]]++;
-  }
-  for (ll i = 0; i < n; i++)
-  {
-    ans += mp[a[i]];
-  }
-  cout << ans;
-
   return 0;
 }
