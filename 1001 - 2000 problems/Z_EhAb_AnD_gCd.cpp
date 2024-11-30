@@ -26,16 +26,26 @@ void setup()
   freopen("output.txt", "w", stdout);
 #endif
 }
+int gcd(int a, int b)
+{
+  if (b == 0)
+    return a;
+  return gcd(b, a % b);
+}
+int lcm(int a, int b)
+{
+  return a / gcd(a, b) * b;
+}
 int main()
 {
   setup();
-  int n;
-  cin >> n;
-  if(n < 2)
-    cout << "-1";
-    for (int i = 2; i <= n; i += 2)
+  int t;
+  cin >> t;
+  while (t--)
   {
-    cout << i << el;
+    int x;
+    cin >> x;
+    cout << --x << " 1" << el;
   }
 
   return 0;

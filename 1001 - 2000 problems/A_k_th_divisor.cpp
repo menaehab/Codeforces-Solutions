@@ -29,14 +29,26 @@ void setup()
 int main()
 {
   setup();
-  int n;
-  cin >> n;
-  if(n < 2)
-    cout << "-1";
-    for (int i = 2; i <= n; i += 2)
+  ll n, k;
+  cin >> n >> k;
+  vector<ll> v;
+  for (int i = 1; i <= sqrt(n); i++)
   {
-    cout << i << el;
+    if (n % i == 0)
+    {
+      if (i == sqrt(n))
+        v.push_back(i);
+      else
+      {
+        v.push_back(i);
+        v.push_back(n / i);
+      }
+    }
   }
-
+  sort(all(v));
+  if (k > v.size())
+    cout << -1;
+  else
+    cout << v[k - 1];
   return 0;
 }

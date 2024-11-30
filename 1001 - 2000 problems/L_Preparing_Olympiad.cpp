@@ -29,14 +29,29 @@ void setup()
 int main()
 {
   setup();
-  int n;
-  cin >> n;
-  if(n < 2)
-    cout << "-1";
-    for (int i = 2; i <= n; i += 2)
+  int n, l, r, x, ans = 0;
+  cin >> n >> l >> r >> x;
+  vector<int> arr(n);
+  for (int &i : arr)
+    cin >> i;
+  for (int i = 0; i < (1 << n); i++)
   {
-    cout << i << el;
+    int sum = 0, mx = 0, mn = 1e9, cnt = 0;
+    for (int j = 0; j < n; j++)
+    {
+      if ((i >> j) & 1)
+      {
+        cnt++;
+        sum += arr[j];
+        mx = max(mx, arr[j]);
+        mn = min(mn, arr[j]);
+      }
+    }
+    if (cnt >= 2 && sum >= l && sum <= r && mx - mn >= x)
+    {
+      ans++;
+    }
   }
-
+  cout << ans;
   return 0;
 }

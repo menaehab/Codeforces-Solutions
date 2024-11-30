@@ -1,15 +1,15 @@
 #include <iostream>
 using namespace std;
 int main() {
-    int N, M;
-    cin >> N >> M;
-    int A[100005] = { 0 };
-    for (int i = 0; i < N; ++i) {
-        int num;
-        cin >> num;
-        A[num]++;
+    int n, m;
+    cin >> n >> m;
+    int a[100005] = { 0 };
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        a[x]++;
     }
-    for (int i = 1; i <= M; ++i) {
-        cout << A[i] << '\n';
+    for (int i = 1; i <= m; i++) {
+        cout << a[i] << '\n';
     }
 }

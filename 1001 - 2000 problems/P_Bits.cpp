@@ -26,17 +26,29 @@ void setup()
   freopen("output.txt", "w", stdout);
 #endif
 }
+ll setBit1(ll x, ll idx)
+{
+  return x | (1 << idx);
+}
 int main()
 {
   setup();
-  int n;
-  cin >> n;
-  if(n < 2)
-    cout << "-1";
-    for (int i = 2; i <= n; i += 2)
+  int t;
+  cin >> t;
+  while (t--)
   {
-    cout << i << el;
+    ll x, y;
+    cin >> x >> y;
+    ll ans = x;
+    for (ll i = 0; i <= 64; i++)
+    {
+      ll tmp = setBit1(ans, i);
+      if (tmp <= y)
+        ans = tmp;
+      else
+        break;
+    }
+    cout << ans << el;
   }
-
   return 0;
 }

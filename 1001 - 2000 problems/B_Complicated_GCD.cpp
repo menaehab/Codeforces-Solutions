@@ -29,14 +29,11 @@ void setup()
 int main()
 {
   setup();
-  int n;
-  cin >> n;
-  if(n < 2)
-    cout << "-1";
-    for (int i = 2; i <= n; i += 2)
-  {
-    cout << i << el;
-  }
-
+  string x, y;
+  cin >> x >> y;
+  if (x == y)
+    cout << x;
+  else
+    cout << 1;
   return 0;
 }

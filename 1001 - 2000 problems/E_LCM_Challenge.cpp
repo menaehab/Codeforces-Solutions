@@ -26,17 +26,30 @@ void setup()
   freopen("output.txt", "w", stdout);
 #endif
 }
+int gcd(int a, int b)
+{
+  if (b == 0)
+    return a;
+  return gcd(b, a % b);
+}
 int main()
 {
   setup();
-  int n;
+  ll n, ans = 0;
   cin >> n;
-  if(n < 2)
-    cout << "-1";
-    for (int i = 2; i <= n; i += 2)
+
+  for (ll i = n; i * i * i > ans; i--)
   {
-    cout << i << el;
+    for (ll j = i; j * j * i > ans; j--)
+    {
+      for (ll k = j; i * j * k > ans; k--)
+      {
+        if (gcd(i, j) == 1 && gcd(i, k) == 1 && gcd(j, k) == 1)
+          ans = i * j * k;
+      }
+    }
   }
+  cout << ans << el;
 
   return 0;
 }

@@ -29,14 +29,25 @@ void setup()
 int main()
 {
   setup();
-  int n;
-  cin >> n;
-  if(n < 2)
-    cout << "-1";
-    for (int i = 2; i <= n; i += 2)
+  int t;
+  cin >> t;
+  while (t--)
   {
-    cout << i << el;
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+    map<int, int> mp;
+    for (int i = 0; i < n; i++)
+    {
+      cin >> arr[i];
+      mp[arr[i]]++;
+    }
+    int ans = 0;
+    for (auto i : mp)
+    {
+      ans += i.second / 2;
+    }
+    cout << ans << el;
   }
-
   return 0;
 }
