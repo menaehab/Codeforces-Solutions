@@ -15,43 +15,44 @@ void setup()
   freopen("output.txt", "w", stdout);
 #endif
 }
+int n;
+vector<int> arr, sub;
+vector<vector<int>> ans;
+
+void sol(int idx = 0)
+{
+  if (!sub.empty())
+  {
+    ans.push_back(sub);
+  }
+  for (int i = idx; i < n; i++)
+  {
+    if (sub.empty() || arr[i] > sub.back())
+    {
+      sub.push_back(arr[i]);
+      sol(i + 1);
+      sub.pop_back();
+    }
+  }
+}
 int main()
 {
   setup();
-  int n, cnt = 0;
   cin >> n;
-  stack<string> stk;
+  arr.resize(n);
   for (int i = 0; i < n; i++)
   {
-    string s;
-    cin >> s;
-    if ((s != "Header" && i == 0) || (i == n - 1 && s != "EndHeader") || cnt > 1)
-    {
-      cout << "WA";
-      return 0;
-    }
-    if (s == "Header")
-      cnt++;
-
-    if (stk.empty())
-    {
-      stk.push(s);
-    }
-    else
-    {
-      if ("End" + stk.top() == s)
-      {
-        stk.pop();
-      }
-      else
-      {
-        stk.push(s);
-      }
-    }
+    cin >> arr[i];
   }
-  if (stk.empty())
-    cout << "ACC";
-  else
-    cout << "WA";
+  sol();
+  sort(all(ans));
+  for (auto x : ans)
+  {
+    for (auto res : x)
+    {
+      cout << res << " ";
+    }
+    cout << el;
+  }
   return 0;
 }

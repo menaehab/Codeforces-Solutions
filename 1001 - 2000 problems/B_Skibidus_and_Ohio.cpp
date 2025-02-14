@@ -18,40 +18,26 @@ void setup()
 int main()
 {
   setup();
-  int n, cnt = 0;
-  cin >> n;
-  stack<string> stk;
-  for (int i = 0; i < n; i++)
+  int t;
+  cin >> t;
+  while (t--)
   {
     string s;
     cin >> s;
-    if ((s != "Header" && i == 0) || (i == n - 1 && s != "EndHeader") || cnt > 1)
+    bool f = 0;
+    for (int i = 0; i < s.size() - 1; i++)
     {
-      cout << "WA";
-      return 0;
+      if (s[i] == s[i + 1])
+      {
+        f = 1;
+        break;
+      }
     }
-    if (s == "Header")
-      cnt++;
 
-    if (stk.empty())
-    {
-      stk.push(s);
-    }
+    if (f)
+      cout << 1 << el;
     else
-    {
-      if ("End" + stk.top() == s)
-      {
-        stk.pop();
-      }
-      else
-      {
-        stk.push(s);
-      }
-    }
+      cout << s.size() << el;
   }
-  if (stk.empty())
-    cout << "ACC";
-  else
-    cout << "WA";
   return 0;
 }

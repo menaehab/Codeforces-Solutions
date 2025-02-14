@@ -18,40 +18,34 @@ void setup()
 int main()
 {
   setup();
-  int n, cnt = 0;
-  cin >> n;
-  stack<string> stk;
-  for (int i = 0; i < n; i++)
+  int t;
+  cin >> t;
+  while (t--)
   {
-    string s;
-    cin >> s;
-    if ((s != "Header" && i == 0) || (i == n - 1 && s != "EndHeader") || cnt > 1)
+    ll n, m;
+    cin >> n >> m;
+    vector<ll> a(n);
+    for (auto &x : a)
+      cin >> x;
+    ll k;
+    cin >> k;
+    bool f = 1;
+    a[0] = min(a[0], k - a[0]);
+    for (int i = 1; i < n; i++)
     {
-      cout << "WA";
-      return 0;
-    }
-    if (s == "Header")
-      cnt++;
-
-    if (stk.empty())
-    {
-      stk.push(s);
-    }
-    else
-    {
-      if ("End" + stk.top() == s)
+      if (min(a[i], k - a[i]) >= a[i - 1])
       {
-        stk.pop();
+        a[i] = min(a[i], k - a[i]);
       }
       else
       {
-        stk.push(s);
+        a[i] = max(a[i], k - a[i]);
       }
     }
+    if (is_sorted(all(a)))
+      cout << "YES" << el;
+    else
+      cout << "NO" << el;
   }
-  if (stk.empty())
-    cout << "ACC";
-  else
-    cout << "WA";
   return 0;
 }
