@@ -4,9 +4,12 @@
 #include <algorithm>
 #include <cmath>
 #include <map>
-#include<iomanip>
+#include <iomanip>
 #include <string>
-#define speedup ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define speedup                 \
+	ios_base::sync_with_stdio(0); \
+	cin.tie(0);                   \
+	cout.tie(0);
 #define ll long long
 #define el "\n"
 #define all(arr) arr.begin(), arr.end()
@@ -19,7 +22,7 @@ int main()
 	speedup;
 	int n;
 	cin >> n;
-	map<string, int>mp;
+	map<string, int> mp;
 	while (n--)
 	{
 		string x;
